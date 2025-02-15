@@ -7,8 +7,8 @@ output_file = "/Users/scottliu/Desktop/easy_step_test/saccades.csv"
 
 df = pd.read_csv(input_file)
 start_timestamp = df["start timestamp [ns]"].iloc[0]
-start_offset_ns = (7 * 60 + 45) * 1e9
-end_offset_ns = (10 * 60 + 45) * 1e9
+start_offset_ns = (6 * 60 + 45) * 1e9
+end_offset_ns = (11 * 60 + 45) * 1e9
 start_ns = start_timestamp + start_offset_ns
 end_ns = start_timestamp + end_offset_ns
 filtered_df = df[(df["start timestamp [ns]"] >= start_ns) & (df["start timestamp [ns]"] <= end_ns)]

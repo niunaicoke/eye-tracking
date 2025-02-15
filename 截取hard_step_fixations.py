@@ -7,8 +7,8 @@ output_file = "/Users/scottliu/Desktop/hard_step_test/fixations.csv"
 
 df = pd.read_csv(input_file)
 start_timestamp = df["start timestamp [ns]"].iloc[0]
-start_offset_ns = (26 * 60 ) * 1e9
-end_offset_ns = (29 * 60 ) * 1e9
+start_offset_ns = (25 * 60 ) * 1e9
+end_offset_ns = (30 * 60 ) * 1e9
 start_ns = start_timestamp + start_offset_ns
 end_ns = start_timestamp + end_offset_ns
 filtered_df = df[(df["start timestamp [ns]"] >= start_ns) & (df["start timestamp [ns]"] <= end_ns)]

@@ -6,8 +6,8 @@ output_file = "/Users/scottliu/Desktop/hard_step_test/gaze.csv"
 
 df = pd.read_csv(input_file)
 start_timestamp = df.iloc[0]['timestamp [ns]']
-start_offset_ns = (26 * 60 ) * 1e9
-end_offset_ns = (29 * 60 ) * 1e9
+start_offset_ns = (25 * 60 ) * 1e9
+end_offset_ns = (30 * 60 ) * 1e9
 start_time_ns = start_timestamp + start_offset_ns
 end_time_ns = start_timestamp + end_offset_ns
 filtered_df = df[(df['timestamp [ns]'] >= start_time_ns) & (df['timestamp [ns]'] <= end_time_ns)]
