@@ -66,12 +66,12 @@ print("Max Possible Gaze Entropy:", max_entropy)
 
 # Print entropy values
 for aoi_name, entropy_value in gaze_entropies.items():
-    print(f"easy_{aoi_name} Gaze Entropy: {entropy_value}")
+    print(f"easy_{aoi_name} Gaze Entropy: {entropy_value:.4f}")
 
 
 
 # AOI bounding box
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(8, 8))
 plt.scatter(x, y, s=1, alpha=0.5, label="Gaze Points")
 for aoi_name, (x_min, x_max, y_min, y_max) in aois.items():
     plt.plot([x_min, x_max, x_max, x_min, x_min], [y_min, y_min, y_max, y_max, y_min], label=aoi_name)
