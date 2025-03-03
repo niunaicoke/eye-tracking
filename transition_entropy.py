@@ -5,7 +5,7 @@ from collections import Counter
 aoi_list = ["Guide", "OR ", "Progbars", "Combined total screen"]
 
 """easy"""
-file_path = "/Users/scottliu/Desktop/2+3_aoi/fixations/easy_aoi.csv"
+file_path = "/Users/scottliu/Desktop/1+2_aoi/fixations/easy_aoi.csv"
 df = pd.read_csv(file_path)
 aoi_sequence = df["aoi name"].tolist()
 transitions = list(zip(aoi_sequence[:-1], aoi_sequence[1:]))
@@ -45,7 +45,7 @@ print(f"easy Normalized Entropy with respect to Max entropy: {gaze_transition_en
 
 
 """medium"""
-file_path = "/Users/scottliu/Desktop/2+3_aoi/fixations/medium_aoi.csv"
+file_path = "/Users/scottliu/Desktop/1+2_aoi/fixations/medium_aoi.csv"
 df = pd.read_csv(file_path)
 aoi_sequence = df["aoi name"].tolist()
 transitions = list(zip(aoi_sequence[:-1], aoi_sequence[1:]))
@@ -84,7 +84,7 @@ print(f"meiudm normalized entropy with respect to Max entropy: {gaze_transition_
 
 
 """hard"""
-file_path = "/Users/scottliu/Desktop/2+3_aoi/fixations/hard_aoi.csv"
+file_path = "/Users/scottliu/Desktop/1+2_aoi/fixations/hard_aoi.csv"
 df = pd.read_csv(file_path)
 aoi_sequence = df["aoi name"].tolist()
 transitions = list(zip(aoi_sequence[:-1], aoi_sequence[1:]))

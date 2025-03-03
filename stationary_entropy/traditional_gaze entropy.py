@@ -11,7 +11,7 @@ def get_grid_index(value, grid_size):
 
 
 """easy"""
-path = "/Users/scottliu/Desktop/2+3_aoi/gaze/easy_gaze.csv"
+path = "/Users/scottliu/Desktop/1+2_aoi/gaze/easy_gaze.csv"
 df = pd.read_csv(path)
 df = df.dropna(subset=['fixation id'])
 df = df[df['gaze detected on surface'] == True]
@@ -29,6 +29,9 @@ prob_dist = prob_dist[prob_dist > 0]
 # Compute gaze entropy
 gaze_entropy = entropy(prob_dist, base=2)
 
+# Compute max entropy
+max_entropy = np.log2(grid_size * grid_size)
+
 plt.figure(figsize=(8, 6))
 plt.imshow(heatmap.T, origin='lower', cmap='hot', interpolation='nearest')
 plt.colorbar(label='Gaze Count')
@@ -37,12 +40,13 @@ plt.ylabel('Y Grid Index')
 plt.title('easy Gaze Heatmap')
 plt.show()
 
-print("Easy Gaze Entropy:", gaze_entropy)
-
+print(f"Max Possible Gaze Entropy: {max_entropy:.4f}")
+print(f"Easy Gaze Entropy: {gaze_entropy:.4f} ")
+print(f"Easy normalized Gaze Entropy respect to max entropy: {gaze_entropy/max_entropy:.4f}")
 
 
 """medium"""
-path = "/Users/scottliu/Desktop/2+3_aoi/gaze/medium_gaze.csv"
+path = "/Users/scottliu/Desktop/1+2_aoi/gaze/medium_gaze.csv"
 df = pd.read_csv(path)
 df = df.dropna(subset=['fixation id'])
 df = df[df['gaze detected on surface'] == True]
@@ -68,12 +72,13 @@ plt.ylabel('Y Grid Index')
 plt.title('medium Gaze Heatmap')
 plt.show()
 
-print("medium Gaze Entropy:", gaze_entropy)
+print(f"medium Gaze Entropy: {gaze_entropy:.4f} ")
+print(f"medium normalized Gaze Entropy respect to max entropy: {gaze_entropy/max_entropy:.4f}")
 
 
 
 """hard"""
-path = "/Users/scottliu/Desktop/2+3_aoi/gaze/hard_gaze.csv"
+path = "/Users/scottliu/Desktop/1+2_aoi/gaze/hard_gaze.csv"
 df = pd.read_csv(path)
 df = df.dropna(subset=['fixation id'])
 df = df[df['gaze detected on surface'] == True]
@@ -89,9 +94,6 @@ prob_dist = prob_dist[prob_dist > 0]
 # Compute gaze entropy
 gaze_entropy = entropy(prob_dist, base=2)
 
-# Compute max entropy
-max_entropy = np.log2(grid_size * grid_size)
-
 plt.figure(figsize=(8, 6))
 plt.imshow(heatmap.T, origin='lower', cmap='hot', interpolation='nearest')
 plt.colorbar(label='Gaze Count')
@@ -99,11 +101,8 @@ plt.xlabel('X Grid Index')
 plt.ylabel('Y Grid Index')
 plt.title('hard Gaze Heatmap')
 plt.show()
-
-print("hard Gaze Entropy:", gaze_entropy)
-print("Max Possible Gaze Entropy:", max_entropy)
-
-
+print(f"hard Gaze Entropy: {gaze_entropy:.4f} ")
+print(f"hard normalized Gaze Entropy respect to max entropy: {gaze_entropy/max_entropy:.4f}")
 
 
 print(df[["gaze position on surface x [normalized]", "gaze position on surface y [normalized]"]].describe())
