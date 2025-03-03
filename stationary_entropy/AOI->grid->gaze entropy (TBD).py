@@ -84,3 +84,8 @@ plt.show()
 
 print(df[["gaze position on surface x [normalized]", "gaze position on surface y [normalized]"]].describe())
 
+
+
+
+
+# Probability of a grid cell= Number of fixation points in the grid cell/ Total number of fixation points in the AOI
