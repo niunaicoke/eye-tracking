@@ -5,7 +5,10 @@ from scipy.stats import entropy
 
 
 # Define grid size
-grid_size = 20
+grid_size = 1080
+
+x_grid_size = 1088
+y_grid_size = 1080
 def get_grid_index(value, grid_size):
     return min(int(value * grid_size), grid_size - 1)  # Ensure values are within bounds
 
@@ -20,9 +23,9 @@ y = df["gaze position on surface y [normalized]"]
 
 
 
-df['x_idx'] = x.apply(lambda v: get_grid_index(v, grid_size))
-df['y_idx'] = y.apply(lambda v: get_grid_index(v, grid_size))
-heatmap, _, _ = np.histogram2d(df['x_idx'], df['y_idx'], bins=grid_size, range=[[0, grid_size], [0, grid_size]])
+df['x_idx'] = x.apply(lambda v: get_grid_index(v, x_grid_size))
+df['y_idx'] = y.apply(lambda v: get_grid_index(v, y_grid_size))
+heatmap, _, _ = np.histogram2d(df['x_idx'], df['y_idx'], bins=(1088, 1080), range=[[0, x_grid_size], [0, y_grid_size]])
 prob_dist = heatmap.flatten() / np.sum(heatmap)
 prob_dist = prob_dist[prob_dist > 0]
 
@@ -30,7 +33,7 @@ prob_dist = prob_dist[prob_dist > 0]
 gaze_entropy = entropy(prob_dist, base=2)
 
 # Compute max entropy
-max_entropy = np.log2(grid_size * grid_size)
+max_entropy = np.log2(x_grid_size * y_grid_size)
 
 plt.figure(figsize=(8, 6))
 plt.imshow(heatmap.T, origin='lower', cmap='hot', interpolation='nearest')
@@ -53,9 +56,9 @@ df = df[df['gaze detected on surface'] == True]
 x = df["gaze position on surface x [normalized]"]
 y = df["gaze position on surface y [normalized]"]
 
-df['x_idx'] = x.apply(lambda v: get_grid_index(v, grid_size))
-df['y_idx'] = y.apply(lambda v: get_grid_index(v, grid_size))
-heatmap, _, _ = np.histogram2d(df['x_idx'], df['y_idx'], bins=grid_size, range=[[0, grid_size], [0, grid_size]])
+df['x_idx'] = x.apply(lambda v: get_grid_index(v, x_grid_size))
+df['y_idx'] = y.apply(lambda v: get_grid_index(v, y_grid_size))
+heatmap, _, _ = np.histogram2d(df['x_idx'], df['y_idx'], bins=(1088, 1080), range=[[0, x_grid_size], [0, y_grid_size]])
 prob_dist = heatmap.flatten() / np.sum(heatmap)
 prob_dist = prob_dist[prob_dist > 0]
 
@@ -85,9 +88,9 @@ df = df[df['gaze detected on surface'] == True]
 x = df["gaze position on surface x [normalized]"]
 y = df["gaze position on surface y [normalized]"]
 
-df['x_idx'] = x.apply(lambda v: get_grid_index(v, grid_size))
-df['y_idx'] = y.apply(lambda v: get_grid_index(v, grid_size))
-heatmap, _, _ = np.histogram2d(df['x_idx'], df['y_idx'], bins=grid_size, range=[[0, grid_size], [0, grid_size]])
+df['x_idx'] = x.apply(lambda v: get_grid_index(v, x_grid_size))
+df['y_idx'] = y.apply(lambda v: get_grid_index(v, y_grid_size))
+heatmap, _, _ = np.histogram2d(df['x_idx'], df['y_idx'], bins=(1088, 1080), range=[[0, x_grid_size], [0, y_grid_size]])
 prob_dist = heatmap.flatten() / np.sum(heatmap)
 prob_dist = prob_dist[prob_dist > 0]
 
