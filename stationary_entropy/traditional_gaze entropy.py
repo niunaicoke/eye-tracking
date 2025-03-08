@@ -5,7 +5,6 @@ from scipy.stats import entropy
 
 
 # Define grid size
-grid_size = 1080
 
 x_grid_size = 1088
 y_grid_size = 1080
